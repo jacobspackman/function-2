@@ -16,8 +16,8 @@ The code above is an example of 'function declaration.' Please re-write the func
 
 // RE-WRITE THE ABOVE FUNCTION IN 'FUNCTION EXPRESSION' SYNTAX HERE.
 
-const findGrape = function(arr){
-    for(let 1=0; i<arr.length; i++){
+const findGrape2 = function(arr){
+    for(let i=0; i<arr.length; i++){
         if(arr[i].color === "purple"){
             return console.log(`The fruit with index ${arr.indexOf(arr[i])} is a grape`)
         }
@@ -26,8 +26,8 @@ const findGrape = function(arr){
 
 // RE-WRITE THE ABOVE FUNCTION IN 'ARROW FUNCTION' SYNTAX HERE.
 
-const findGrape = arr => {
-     for(let 1=0; i<arr.length; i++){
+const findGrape3 = arr => {
+     for(let i=0; i<arr.length; i++){
         if(arr[i].color === "purple"){
             return console.log(`The fruit with index ${arr.indexOf(arr[i])} is a grape`)
         }
@@ -39,11 +39,11 @@ const findGrape = arr => {
 Write a one line function (give a name of your choice) with an implicit return that when the function is invoked, it will print: 'The first parameter is [parameter1]. The second parameter is [parameter2]'.
 */
 
-const myParameters = (param1, param2) => `The first parameter is ${param1}. The second parameter is ${param2}`
+const myParameters = (param1, param2) => console.log(`The first parameter is ${param1}. The second parameter is ${param2}`)
 
 
 // INVOKE THE FUNCTION HERE. THE PARAMETERS TAKE ANY DATATYPE.
-
+myParameters(1, 2)
 
 ////////// PROBLEM 3 //////////
 /*
@@ -52,10 +52,15 @@ Then, outside of the greeting function, invoke the greeting function, passing in
 */
 
 // CODE 'GREETING FUNCTION' HERE
+const fullName = (name) => console.log(`Hello my full name is ${name}`)
 
+const greeting = (firstName, lastName, callback) => {
+    let fullName = `${firstName} ${lastName}`
+    return callback(fullName)
+}
 
 // INVOKE 'GREETING FUNCTION' HERE
-
+greeting(`Jacob`, `Spackman`, fullName)
 
 ////////// PROBLEM 4 //////////
 
@@ -68,15 +73,22 @@ let totalCost = []
 /* 
 Write a function called 'pricesPlusTax' that takes 2 params: an array ('prices' array) and a callback function. Inside the function, loop over the 'prices' array. For every iteration, calculate a new total cost (original price plus 20% tax), then push it to the 'totalCost' array. After the loop, invoke the callback function, passing in the 'totalCost' array.
 */
+const newTotalCost = arr => console.log(`The new array plus tax = ${arr}`)
 
-// CODE HERE
+const pricePlusTax = (arr, callback) => {
+    for(let i=0; i<arr.length; i++){
+        arr[i] = arr[i] + (arr[i]/5)
+        totalCost.push(arr[i])  
+    }
+    return callback(totalCost)
+}
 
 
 /* 
 Invoke the 'pricesPlusTax' function, passing in the 'prices' array and a callback function (passing in 'totalCost' as a param) that will print "The new array plus tax = [totalCost]"
 */
 
-// CODE HERE
+pricePlusTax(prices, newTotalCost);
 
 
 ////////// PROBLEM 5 //////////
