@@ -39,16 +39,19 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
-// CODE HERE 
+const first = (arr, callback) => {
+  let firstName = arr[0]
+  return callback(firstName)
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// first(names, firstName => {
-//   console.log('The first name in names is ' + firstName)
-// })
+first(names, firstName => {
+  console.log('The first name in names is ' + firstName)
+})
 
 
 
@@ -59,16 +62,19 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   Then invoke the callback, passing in the last element in the array as the argument.
 */
 
-// CODE HERE
+const last = (arr, callback) => {
+  let lastName = arr[arr.length - 1]
+  return callback(lastName)
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// last(names, lastName => {
-//   console.log('The last name in names is ' + lastName)
-// })
+last(names, lastName => {
+  console.log('The last name in names is ' + lastName)
+})
 
 
 
@@ -81,20 +87,28 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-// CODE HERE 
+const contains = (arr, name1, callback) => {
+  let answer = false
+  for (let i=0; i<arr.length; i++){
+    if(name1 === arr[i]){
+      answer = true
+    }
+  }
+  return callback(answer)
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// contains(names, 'Colt', result => {
-//   if(result === true){
-//     console.log('Colt is in the array')
-//   } else {
-//     console.log('Colt is not in the array')
-//   }
-// })
+contains(names, 'Colt', result => {
+  if(result === true){
+    console.log('Colt is in the array')
+  } else {
+    console.log('Colt is not in the array')
+  }
+})
 
 
 
@@ -106,8 +120,21 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   Hint: you can use a nested for loop to do this.
 */
 
-// CODE HERE
+// const uniq = (arr, callback) => {
+//   let uniqArray = []
+//   for(let i=0; i<arr.length; i++){
+//     if(!uniqArray.includes(arr[i])){
+//       uniqArray.push(arr[i])
+//     } 
+//   }
+//   return callback(uniqArray)
+// }
 
+const uniq = (arr, callback) => callback([...new Set(arr)])
+
+const uniqArrFunction = uniqArr => {
+  console.log(`The new array with all the duplicate itams removed is ${uniqArr}`)
+}
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
   The callback function should take in one parameter called uniqArr.
@@ -115,8 +142,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   'The new names array with all the duplicate items removed is [UNIQARRPARAM].'
 */
 
-// CODE HERE
-
+uniq(names, uniqArrFunction)
 
 
 ////////// PROBLEM 6 //////////
@@ -126,8 +152,13 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
 
-// CODE HERE 
+const each = (arr, callback) => {
+  for(let i=0; i<arr.length; i++){
+    indexOfItem(arr[i], i)
+  }
+}
 
+const indexOfItem = (item, index) => console.log(`The item at index ${index} is ${item}`)
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -136,7 +167,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   'The item at index [INDEXPARAM] is [ITEMPARAM].'
 */
 
-// CODE HERE
+each(names, indexOfItem)
 
 
 
@@ -245,6 +276,6 @@ var users = [
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-getUserById(users, '16t', user => {
-  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
-})
+// getUserById(users, '16t', user => {
+//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
+// })
