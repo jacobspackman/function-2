@@ -193,7 +193,7 @@ each(names, indexOfItem)
   the two parameters together and return the sum.
 */
 
-// CODE HERE
+const addingFactory = num1 => (num2) => num1 + num2
 
 /*
   Now that you have addingFactory, you can create other
@@ -207,7 +207,7 @@ each(names, indexOfItem)
   10 as an arguemnt.
 */
 
-// CODE HERE
+const addTen = addingFactory(10)
 
 /*
   Now the inner function is stored in the addTen variable! 
@@ -219,7 +219,8 @@ each(names, indexOfItem)
   to see the different outputs.
 */
 
-// CODE HERE
+console.log(addTen(6))
+console.log(addTen(8))
 
 /*
   Let's make another function from the addingFactory. 
@@ -232,8 +233,9 @@ each(names, indexOfItem)
   to add any number to your favorite number!
 */
 
-// CODE HERE
+const addTwo = addingFactory(2)
 
+console.log(addTwo(256))
 
 
 
@@ -268,7 +270,13 @@ var users = [
 ]
 // Do not edit the code above.
 
-// CODE HERE 
+const getUserById = (arr, id, callback) => {
+  for(let i=0; i<arr.length; i++){
+    if(arr[i].id === id){
+      return callback(arr[i])
+    }
+  }
+}
 
 
 
@@ -276,6 +284,6 @@ var users = [
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// getUserById(users, '16t', user => {
-//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
-// })
+getUserById(users, '16t', user => {
+  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
+})
